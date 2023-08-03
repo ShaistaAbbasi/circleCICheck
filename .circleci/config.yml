@@ -13,10 +13,14 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
-      - checkout
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          command: echo "Hello World!"
+  
+  say_goodbye:
+    docker:
+      - image: cimg/base:2022.05
+    steps:
+      - run: echo "Say goodbye to YAML!"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
@@ -24,3 +28,4 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+      - say_goodbye
